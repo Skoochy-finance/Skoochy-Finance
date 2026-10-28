@@ -336,127 +336,193 @@ const translations = {
     trainingPageTitle: "Sant fòmasyon",
     accountPageTitle: "Kont mwen",
     settingsTitle: "Paramèt",
-    calculateRisk: "Kalkile risk",
-    calculateChange: "Kalkile chanjman",
-    demoExecute: "Fè simulation an",
-    demoReset: "Rekòmanse",
-    saveProfile: "Anrejistre pwofil la",
-    connectionTitle: "Eta koneksyon"
-  },
-  en: {
-    navHome: "Home",
-    navCalculator: "Calculator",
-    navDemo: "Demo",
-    navTraining: "Training",
-    navAccount: "Account",
-    navSettings: "Settings",
-    heroPill: "✦ Educational platform",
-    heroButton: "Start training →",
-    toolsTitle: "Our financial tools",
-    calcPageTitle: "Trading calculator",
-    demoPageTitle: "Demo account",
-    trainingPageTitle: "Training center",
-    accountPageTitle: "My account",
-    settingsTitle: "Settings",
-    calculateRisk: "Calculate risk",
-    calculateChange: "Calculate change",
-    demoExecute: "Run simulation",
-    demoReset: "Reset",
-    saveProfile: "Save profile",
-    connectionTitle: "Connection status"
-  },
-  es: {
-    navHome: "Inicio",
-    navCalculator: "Cálculo",
-    navDemo: "Demo",
-    navTraining: "Formación",
-    navAccount: "Cuenta",
-    navSettings: "Ajustes",
-    heroPill: "✦ Plataforma educativa",
-    heroButton: "Comenzar formación →",
-    toolsTitle: "Nuestras herramientas financieras",
-    calcPageTitle: "Calculadora de trading",
-    demoPageTitle: "Cuenta demo",
-    trainingPageTitle: "Centro de formación",
-    accountPageTitle: "Mi cuenta",
-    settingsTitle: "Ajustes",
-    calculateRisk: "Calcular riesgo",
-    calculateChange: "Calcular variación",
-    demoExecute: "Ejecutar simulación",
-    demoReset: "Reiniciar",
-    saveProfile: "Guardar perfil",
-    connectionTitle: "Estado de conexión"
-  }
-};
+    
+es pips et la gestion du risque.</p><button class="open-btn" data-goto="forex" data-i18n="open">Ouvrir ›</button></article>
+  <article class="card"><div class="feature-icon gold">₿</div><h3 data-i18n="card3Title">Crypto</h3><p data-i18n="card3Text">Étudiez les crypto-actifs et leurs variations.</p><button class="open-btn" data-goto="crypto" data-i18n="open">Ouvrir ›</button></article>
+  <article class="card"><div class="feature-icon purple">🎓</div><h3 data-i18n="card4Title">Formation</h3><p data-i18n="card4Text">Apprenez les notions essentielles des marchés financiers.</p><button class="open-btn" data-goto="learn" data-i18n="open">Ouvrir ›</button></article>
+ </div>
+ <div class="card account-strip"><div class="feature-icon blue" style="margin:0">♙</div><div class="grow"><h3 data-i18n="navAccount">Mon compte</h3><p data-i18n="accountTeaser">Connectez-vous pour accéder à votre profil et vos paramètres.</p></div><button data-goto="account" data-i18n="login">Se connecter ›</button></div>
+ <div class="card" id="monetizationPanel" style="margin-top:16px">
+  <h3>💰 Piblisite ak tan aprantisaj</h3>
+  <p>Platfòm nan ka mezire tan sesyon ak paj fòmasyon vizite pou estatistik administratè yo. Tan pase sou sit la pa kreye revni otomatik poukont li.</p>
+  <div class="grid">
+   <div class="card ad-slot" id="adSlotTop"><strong>Espas piblisite 1</strong><p>Ap tann kont rezo piblisite a ak apwobasyon sit la.</p></div>
+   <div class="card ad-slot" id="adSlotLearning"><strong>Espas piblisite fòmasyon</strong><p>Ap tann kòd piblisite ofisyèl rezo a.</p></div>
+  </div>
+  <p class="subtle">Pa gen piblisite reyèl ki aktive jiskaske nou mete kòd founisè a (pa egzanp AdSense), ID piblikatè a, epi sit la apwouve. Pa klike sou pwòp piblisite ou.</p>
+  <p><strong>Lyen peman:</strong> <a href="https://pay.kobara.app/dbab401e50" target="_blank" rel="noopener noreferrer">Louvri paj peman Kobara</a></p>
+  <p><strong>Imèl kontak:</strong> jerrynoelsaint88@gmail.com</p>
+ </div>
+ <div class="card" style="margin-top:16px"><h3>🔐 Aksè ak abònman</h3><p>Enskri, chwazi MonCash, NatCash oswa USDT epi voye referans peman pou verifikasyon.</p><button data-goto="membership" class="primary">Enskripsyon / Peman</button></div>
+  <div class="quicknav"><h3 data-i18n="overview">Vue d'ensemble</h3><button data-goto="home">▦ <span data-i18n="dashboard">Tableau de bord</span><span>›</span></button><button data-goto="trading">⇄ <span data-i18n="navTrading">Trading</span><span>›</span></button><button data-goto="p2p">♧ <span data-i18n="navP2P">P2P</span><span>›</span></button><button data-goto="settings">⚙ <span data-i18n="navSettings">Paramètres</span><span>›</span></button></div>
+</section>
+<section id="converter" class="page"><h2 class="section-title" data-i18n="converterTitle">Convertisseur de devises</h2><p class="subtle" data-i18n="rateNotice">Entrez vous-même le taux de change applicable. Les taux ne sont pas en direct.</p>
+ <div class="card"><div class="field-grid"><div><label data-i18n="currencyAmount" for="amount">Montant</label><input id="amount" type="number" min="0" step="any" value="100"></div><div><label data-i18n="fromCurrency" for="fromCurrency">De</label><select id="fromCurrency"><option>USD</option><option>HTG</option><option>EUR</option><option>CAD</option><option>GBP</option><option>MXN</option><option>BRL</option><option> DOP</option><option>JPY</option><option>CHF</option></select></div><div><label data-i18n="toCurrency" for="toCurrency">Vers</label><select id="toCurrency"><option>HTG</option><option>USD</option><option>EUR</option><option>CAD</option><option>GBP</option><option>MXN</option><option>BRL</option><option>DOP</option><option>JPY</option><option>CHF</option></select></div><div><label data-i18n="exchangeRate" for="rate">Taux (1 unité de la devise source)</label><input id="rate" type="number" min="0.000001" step="any" value="130"></div></div><button id="calculateConversion" data-i18n="calculate">Calculer</button><div class="result" id="conversionResult" aria-live="polite">—</div><p class="warning" data-i18n="manualRateWarning">Le taux est manuel et indicatif. Vérifiez un taux fiable avant toute opération.</p></div>
+ <div class="card" style="margin-top:16px"><h3 data-i18n="quickCalc">Calculatrice générale</h3><div class="field-grid"><div><label for="sf-number-a">A</label><input id="sf-number-a" type="number" value="10"></div><div><label for="sf-number-b">B</label><input id="sf-number-b" type="number" value="2"></div></div><label for="sf-operation" data-i18n="operation">Opération</label><select id="sf-operation"><option value="add">+</option><option value="subtract">−</option><option value="multiply">×</option><option value="divide">÷</option><option value="percent">A en % de B</option></select><button id="sf-calculate" data-i18n="calculate">Calculer</button><div id="sf-calculator-result" class="result" aria-live="polite">—</div></div>
+</section>
+<section id="forex" class="page"><h2 class="section-title">Forex — <span data-i18n="riskCalculator">calcul du risque</span></h2><p class="subtle" data-i18n="simulationNotice">Calculs éducatifs uniquement, pas des ordres de marché.</p><div class="card"><div class="field-grid"><div><label for="fxPair" data-i18n="pair">Paire</label><select id="fxPair"><option>EURUSD</option><option>GBPUSD</option><option>USDJPY</option><option>USDCHF</option><option>USDCAD</option><option>AUDUSD</option><option>NZDUSD</option><option>EURGBP</option><option>EURJPY</option><option>EURCHF</option><option>EURCAD</option><option>EURAUD</option><option>EURNZD</option><option>GBPJPY</option><option>GBPCHF</option><option>GBPCAD</option><option>GBPAUD</option><option>GBPNZD</option><option>AUDJPY</option><option>AUDCAD</option><option>AUDCHF</option><option>AUDNZD</option><option>CADJPY</option><option>CADCHF</option><option>NZDJPY</option><option>NZDCHF</option><option>CHFJPY</option><option>USDSEK</option><option>USDNOK</option><option>USDDKK</option><option>USDZAR</option><option>USDMXN</option>
+</select></div>
+<div><label for="fxBalance">Capital ($)</label><input id="fxBalance" type="number" min="0" value="1000"></div>
+<div><label for="fxRisk">Risque (%)</label><input id="fxRisk" type="number" min="0" max="100" step="any" value="1"></div>
+<div><label for="fxEntry">Prix d'entrée</label><input id="fxEntry" type="number" min="0" step="any" value="1.1000"></div>
+<div><label for="fxStop">Stop loss</label><input id="fxStop" type="number" min="0" step="any" value="1.0950"></div>
+<div><label for="fxDirection">Direction</label><select id="fxDirection"><option value="buy">Achat</option><option value="sell">Vente</option></select></div>
+</div>
+<button id="fxCalculate" class="primary" type="button">Calculer le risque</button>
+<div id="fxResult" class="result" aria-live="polite">—</div>
+</div>
+</section>
+  
+<section id="crypto" class="page">
+<h2 class="section-title">Crypto — calculateur</h2>
+<div class="card">
+<label for="cryptoAsset" data-i18n="asset">Actif</label>
+<select id="cryptoAsset">
+<option>BTC</option><option>ETH</option><option>USDT</option><option>USDC</option><option>BNB</option><option>SOL</option><option>XRP</option><option>ADA</option><option>DOGE</option><option>TRX</option><option>AVAX</option><option>LINK</option><option>LTC</option><option>DOT</option><option>TON</option><option>SUI</option><option>UNI</option><option>OTHER</option>
+</select>
+<div class="field-grid">
+<div><label for="cryptoInvestment" data-i18n="investment">Investissement ($)</label><input id="cryptoInvestment" type="number" value="100"></div>
+<div><label for="cryptoBuyPrice" data-i18n="buyPrice">Prix d'achat</label><input id="cryptoBuyPrice" type="number" step="any" value="50000"></div>
+<div><label for="cryptoSellPrice" data-i18n="sellPrice">Prix de vente</label><input id="cryptoSellPrice" type="number" step="any" value="52000"></div>
+<div><label for="cryptoFee" data-i18n="feePercent">Frais (%)</label><input id="cryptoFee" type="number" value="0.2" min="0" max="20" step=".1"></div>
+</div>
+<button id="cryptoCalculate" data-i18n="calculate">Calculer</button>
+<div id="cryptoResults" class="result" aria-live="polite">—</div>
+</div>
+</section>
 
-let currentLanguage = "fr";
-let demoBalance = 10000;
-let demoTrades = [];
-let completedLessons = new Set();
+<section id="cfd" class="page">
+<h2 class="section-title">CFD — simulateur</h2>
+<p class="warning" data-i18n="cfdRisk">Le levier amplifie les pertes comme les gains. Simulation uniquement.</p>
+<div class="card">
+<div class="field-grid">
+<div><label for="cfdDirection" data-i18n="direction">Direction</label><select id="cfdDirection"><option value="buy" data-i18n="buy">Acheter</option><option value="sell" data-i18n="sell">Vendre</option></select></div>
+<div><label for="cfdInstrument" data-i18n="instrument">Instrument</label><select id="cfdInstrument"><option>NASDAQ 100</option><option>S&amp;P 500</option><option>Gold</option><option>Silver</option><option>WTI Oil</option><option>AAPL</option><option>TSLA</option><option>EURUSD</option><option>BTCUSD</option></select></div>
+<div><label for="cfdCapital" data-i18n="capital">Capital ($)</label><input id="cfdCapital" type="number" value="500"></div>
+<div><label for="cfdEntry" data-i18n="entry">Prix d'entrée</label><input id="cfdEntry" type="number" step="any" value="100"></div>
+<div><label for="cfdExit" data-i18n="exitPrice">Prix de sortie</label><input id="cfdExit" type="number" step="any" value="105"></div>
+<div><label for="cfdUnits" data-i18n="quantity">Quantité</label><input id="cfdUnits" type="number" value="1"></div>
+<div><label for="cfdLeverage" data-i18n="leverage">Levier (1–100)</label><input id="cfdLeverage" type="number" value="5" min="1" max="100"></div>
+<div><label for="cfdFee" data-i18n="fees">Frais ($)</label><input id="cfdFee" type="number" value="1"></div>
+</div>
+<button id="cfdCalculate" data-i18n="calculate">Calculer</button>
+<div id="cfdWarning" class="result" aria-live="polite">—</div>
+<div id="cfdResults" class="result hidden">
+<div class="list-row"><span>Position</span><strong id="cfdValue"></strong></div>
+<div class="list-row"><span>Marge théorique</span><strong id="cfdMargin"></strong></div>
+<div class="list-row"><span>P/L brut</span><strong id="cfdGross"></strong></div>
+<div class="list-row"><span>P/L net</span><strong id="cfdNet"></strong></div>
+<div class="list-row"><span>% capital</span><strong id="cfdPercent"></strong></div>
+</div>
+</div>
+</section>
+  
+<section id="trading" class="page">
+<h2 class="section-title" data-i18n="navTrading">Trading</h2>
+<div class="card">
+<p class="pill" data-i18n="demoLabel">Mode démo — argent fictif</p>
+<div class="stats" style="margin:16px 0">
+<div class="card stat"><span data-i18n="demoBalance">Solde démo</span><strong id="demoBalance">$500.00</strong></div>
+<div class="card stat"><span data-i18n="demoPnl">P/L démo</span><strong id="demoPnl">$0.00</strong></div>
+</div>
+<div class="field-grid">
+<div><label for="tradeMarket" data-i18n="market">Marché</label><select id="tradeMarket"><option>EURUSD</option><option>GBPUSD</option><option>USDJPY</option><option>BTCUSD</option><option>ETHUSD</option><option>NASDAQ</option><option>GOLD</option></select></div>
+<div><label for="tradeDirection" data-i18n="direction">Direction</label><select id="tradeDirection"><option value="buy" data-i18n="buy">Acheter</option><option value="sell" data-i18n="sell">Vendre</option></select></div>
+<div><label for="tradeEntry" data-i18n="entry">Prix d'entrée</label><input id="tradeEntry" type="number" step="any" value="100"></div>
+<div><label for="tradeStop" data-i18n="stopLoss">Stop Loss</label><input id="tradeStop" type="number" step="any" value="98"></div>
+<div><label for="tradeTarget" data-i18n="takeProfit">Take Profit</label><input id="tradeTarget" type="number" step="any" value="104"></div>
+<div><label for="tradeQuantity" data-i18n="quantity">Quantité</label><input id="tradeQuantity" type="number" value="1" min=".01" step=".01"></div>
+</div>
+<button id="analyzeTrade" data-i18n="analyzeTrade">Analyser le scénario</button>
+<div id="tradeAnalysis" class="result" aria-live="polite">—</div>
+<button id="executeDemo" class="primary" data-i18n="simulateTrade" style="margin-top:12px">Simuler le résultat</button>
+<div id="demoMessage" class="result" aria-live="polite">Les transactions sont fictives et ne sont pas envoyées sur un marché réel.</div>
+<h3 data-i18n="history">Historique démo</h3>
+<div id="demoHistory" class="subtle">Aucune simulation pour le moment.</div>
+<button id="resetDemo" style="margin-top:12px" data-i18n="resetDemo">Réinitialiser à $500</button>
+</div>
+</section>
 
-function translatePage(language) {
-  currentLanguage = translations[language] ? language : "fr";
-  document.documentElement.lang = currentLanguage;
+<section id="p2p" class="page">
+<h2 class="section-title">P2P — kalkilatris</h2>
+<div class="card">
+<label for="p2pPair">Pè / avantaj pou estimasyon</label>
+<select id="p2pPair">
+<option value="USD/HTG">USD / HTG</option><option>USD/EUR</option><option>USD/CAD</option><option>USD/GBP</option><option>USD/JPY</option><option>USD/DOP</option><option>USD/MXN</option><option>USD/BRL</option><option>USD/CHF</option><option>USD/NGN</option><option>USD/XOF</option><option>USD/XAF</option><option>USD/USDT</option><option>USD/BTC</option><option>USD/ETH</option><option>EUR/HTG</option><option>CAD/HTG</option><option>USDT/HTG</option><option>BTC/USDT</option><option>ETH/USDT</option>
+</select>
+<div class="field-grid">
+<div><label for="p2pCurrency">Lajan montan an</label><select id="p2pCurrency"><option value="USD">USD — Dola</option><option value="HTG">HTG — Goud</option></select></div>
+<div><label for="p2pDirection" data-i18n="direction">Direction</label><select id="p2pDirection"><option value="buy" data-i18n="buy">Achte</option><option value="sell" data-i18n="sell">Vann</option></select></div>
+<div><label for="p2pAmount" data-i18n="amount">Montan</label><input id="p2pAmount" type="number" value="100"></div>
+<div><label for="p2pRate" data-i18n="rate">To echanj (1 USD = HTG)</label><input id="p2pRate" type="number" value="130" min="0.000001" step="any"></div>
+<div><label for="p2pFee" data-i18n="feePercent">Frais (%)</label><input id="p2pFee" type="number" value="1" min="0" max="100"></div>
+</div>
+<button id="p2pCalculate" data-i18n="calculate">Calculer</button>
+<div id="p2pMessage" class="result" aria-live="polite">—</div>
+<div id="p2pResults" class="result hidden">
+<div class="list-row"><span>Brut</span><strong id="p2pGross"></strong></div>
+<div class="list-row"><span>Frais</span><strong id="p2pFees"></strong></div>
+<div class="list-row"><span>Net</span><strong id="p2pNet"></strong></div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<h3>🧮 P2P se kalkilatris sèlman</h3>
+<p class="subtle">Metòd peman yo retire nan seksyon P2P a. Pa gen achte/vann, transfè lajan oswa lòd reyèl nan zouti sa a. Sèvi ak to, pè ak frè ou verifye yo pou fè estimasyon sèlman.</p>
+<p class="warning">Peman abònman yo rete nan seksyon Enskripsyon/Peman. Yo poko aktive otomatikman: sa mande entegrasyon founisè peman ak verifikasyon sou sèvè.</p>
+</div>
+</section>
+  <section id="learn" class="page">
+<h2 class="section-title" data-i18n="academy">Académie de trading</h2>
+<p class="subtle" data-i18n="academyIntro">Cours pour débutants : apprendre d'abord, pratiquer en démo, gérer le risque.</p>
 
-  Object.entries(translations[currentLanguage]).forEach(([id, value]) => {
-    const element = $(id);
-    if (element) element.textContent = value;
-  });
+<details class="lesson" open>
+<summary data-i18n="candles">1. Chandeliers japonais</summary>
+<p data-i18n="candlesText">Le corps relie le prix d'ouverture au prix de clôture. Une bougie haussière clôture au-dessus de son ouverture ; une bougie baissière clôture en dessous. Les mèches montrent les extrêmes atteints pendant la période.</p>
+<div class="result">🟩 Ouverture → clôture plus haute : haussier<br>🟥 Ouverture → clôture plus basse : baissier<br>Les couleurs peuvent varier selon le graphique.</div>
+</details>
 
-  const selector = $("languageSelect");
-  const settingsSelector = $("settingsLanguage");
+<details class="lesson">
+<summary data-i18n="trend">2. Tendances du marché</summary>
+<p data-i18n="trendText">Tendance haussière : sommets et creux qui montent. Tendance baissière : sommets et creux qui descendent. Un marché latéral oscille dans une zone. Aucun signal ne garantit un résultat.</p>
+</details>
 
-  if (selector) selector.value = currentLanguage;
-  if (settingsSelector) settingsSelector.value = currentLanguage;
+<details class="lesson">
+<summary data-i18n="liquidity">3. Liquidité</summary>
+<p data-i18n="liquidityText">La liquidité décrit la facilité d'acheter ou vendre sans trop déplacer le prix. Les zones de liquidité sont des endroits où des ordres peuvent se concentrer ; elles ne sont pas visibles avec certitude.</p>
+</details>
 
-  try {
-    localStorage.setItem("sf_language", currentLanguage);
-  } catch (error) {
-    console.warn("Langue non sauvegardée localement.");
-  }
-}
+<details class="lesson">
+<summary data-i18n="obfvg">4. Order Blocks et FVG</summary>
+<p data-i18n="obfvgText">Un Order Block est une zone que certains traders interprètent comme liée à une impulsion de prix. Un Fair Value Gap (FVG) est une zone de déséquilibre observée sur trois bougies. Ce sont des concepts d'analyse, pas des prédictions certaines.</p>
+</details>
 
-function showPage(pageName) {
-  document.querySelectorAll(".page").forEach((page) => {
-    page.classList.toggle("active", page.id === "page-" + pageName);
-  });
+<details class="lesson">
+<summary data-i18n="fib">5. Fibonacci et outils de graphique</summary>
+<p data-i18n="fibText">Le retracement de Fibonacci sert à marquer des niveaux possibles de réaction (souvent 38,2 %, 50 % et 61,8 %). Entraînez-vous aussi à tracer lignes de tendance, supports et résistances. Cette page n'intègre pas encore un graphique TradingView interactif.</p>
+</details>
 
-  document.querySelectorAll(".bottom-nav [data-page]").forEach((button) => {
-    const active = button.dataset.page === pageName;
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-current", active ? "page" : "false");
-  });
+<details class="lesson">
+<summary data-i18n="riskLesson">6. Gestion du risque</summary>
+<p data-i18n="riskText">Définissez le risque avant d'entrer, utilisez un Stop Loss adapté et évitez de risquer une grande part du capital sur une seule opération. Le levier peut amplifier les pertes. Les stratégies doivent être testées en démo.</p>
+</details>
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
+<details class="lesson">
+<summary>7. Forex: pè majè, minè ak ekzotik</summary>
+<p>Pè majè yo gen USD ak lòt gwo lajan tankou EURUSD oswa GBPUSD. Pè minè pa gen USD; pè ekzotik konbine yon gwo lajan ak lajan yon mache ki pi piti. Spread, lè mache a ak likidite ka diferan anpil. Toujou verifye valè pip pou enstriman ak kont ou.</p>
+</details>
 
-document.addEventListener("click", (event) => {
-  const gotoButton = event.target.closest("[data-goto]");
-  const navButton = event.target.closest(".bottom-nav [data-page]");
+<details class="lesson">
+<summary>8. Crypto: blockchain, wallet ak stablecoin</summary>
+<p>Blockchain se yon rejis distribye. Wallet la jere kle ki pèmèt ou kontwole byen dijital; pèdi fraz rekiperasyon an ka fè ou pèdi aksè. Stablecoin tankou USDT vize swiv yon referans, men li toujou gen risk emetè, platfòm, rezo ak depeg. Verifye rezo a anvan transfè.</p>
+</details>
 
-  if (gotoButton) showPage(gotoButton.dataset.goto);
-  if (navButton) showPage(navButton.dataset.page);
-});
+<details class="lesson">
+<summary>9. CFD: maj, levye ak liquidation</summary>
+<p>CFD se yon kontra sou diferans pri, san ou pa nesesèman posede byen an. Maj se garanti ki nesesè pou kenbe pozisyon an. Levye ogmante ekspozisyon epi ka akselere pèt; frè finansman lannuit, spread ak gap ka afekte rezilta. Fè pratik an demo.</p>
+</details>
 
-$("languageSelect").addEventListener("change", (event) => {
-  translatePage(event.target.value);
-});
-
-$("settingsLanguage").addEventListener("change", (event) => {
-  translatePage(event.target.value);
-});
-
-$("notificationBtn").addEventListener("click", () => {
-  alert(
-    currentLanguage === "ht"
-      ? "Pa gen nouvo notifikasyon pou kounye a."
-      : currentLanguage === "es"
-      ? "No hay nuevas notificaciones."
-      : currentLanguage === "en"
-      ? "There are no new notifications."
-      : "Aucune nouvelle notification."
-  );
-});
-</script>
-</body>
-</html>
+<details class="lesson">
+<summary>10. P2P: sekirite tranzaksyon</summary>
+<p>P2P mete achtè ak vandè an kontak. Verifye non kont moun nan, kondisyon platfòm nan, frè ak limit. Pa lage crypto anvan ou konfime lajan an rive nan kont ou; pa fè konfyans ak screenshot sèlman. Sèvi ak escrow platfòm nan lè li disponib epi kenbe prèv tranzaksyon yo.</p>
+</details>
+  
