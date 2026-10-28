@@ -792,3 +792,194 @@ es pips et la gestion du risque.</p><button class="open-btn" data-goto="forex" d
   </div>
 </section>
   
+<script>
+/* Skoochy Finance — Pati 7C
+   Kontwòl entèfas peman ak verifikasyon fòm.
+   Sa pa konfime peman reyèl.
+*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  const get = (id) => document.getElementById(id);
+
+  function showMessage(id, message) {
+    const element = get(id);
+    if (element) element.textContent = message;
+  }
+
+  function validEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  // Demann peman MonCash oswa NatCash
+  const createPaymentButton = get("createPaymentRequest");
+
+  if (createPaymentButton) {
+    createPaymentButton.addEventListener("click", function () {
+      const provider = get("paymentProvider")?.value || "";
+      const amount = Number(get("paymentAmount")?.value);
+      const email = get("paymentCustomerEmail")?.value.trim() || "";
+
+      if (!provider) {
+        showMessage("paymentRequestMessage", "Chwazi yon metòd peman.");
+        return;
+      }
+
+      if (!Number.isFinite(amount) || amount <= 0) {
+        showMessage("paymentRequestMessage", "Antre yon montan ki valab.");
+        return;
+      }
+
+      if (!validEmail(email)) {
+        showMessage("paymentRequestMessage", "Antre yon adrès imèl ki valab.");
+        return;
+      }
+
+      showMessage(
+        "paymentRequestMessage",
+        "Fòm nan valab. Peman an poko fèt. Pou kontinye, fòk backend peman Skoochy Finance la konfigire epi konfime tranzaksyon an."
+      );
+
+      showMessage(
+        "transactionStatus",
+        "Estati: Pending — pa gen konfimasyon peman ki resevwa."
+      );
+    });
+  }
+
+  // Referans peman USDT
+  const usdtButton = get("submitUsdtReference");
+
+  if (usdtButton) {
+    usdtButton.addEventListener("click", function () {
+      const network = get("usdtNetwork")?.value || "";
+      const amount = Number(get("usdtAmount")?.value);
+      const reference = get("usdtTxReference")?.value.trim() || "";
+
+      if (!network) {
+        showMessage("usdtMessage", "Chwazi rezo tranzaksyon an.");
+        return;
+      }
+
+      if (!Number.isFinite(amount) || amount <= 0) {
+        showMessage("usdtMessage", "Antre yon montan USDT ki valab.");
+        return;
+      }
+
+      if (reference.length < 10) {
+        showMessage(
+          "usdtMessage",
+          "Antre referans tranzaksyon an. Backend la dwe verifye hash la sou rezo ki kòrèk la."
+        );
+        return;
+      }
+
+      showMessage(
+        "usdtMessage",
+        "Referans lan pare pou verifikasyon. Peman an poko konfime; pa konsidere abònman an kòm aktive."
+      );
+
+      showMessage(
+        "transactionStatus",
+        "Estati: Pending — referans lan poko verifye sou blockchain."
+      );
+    });
+  }
+
+  // Enstriksyon pou metòd peman
+  const providerSelect = get("paymentProvider");
+
+  if (providerSelect) {
+    providerSelect.addEventListener("change", function () {
+      const provider = providerSelect.value;
+
+      showMessage(
+        "paymentRequestMessage",
+        "Metòd chwazi: " + provider +
+        ". Verifikasyon ak konfimasyon sèvè nesesè anvan nenpòt peman valide."
+      );
+    });
+  }
+
+  // Mete mesaj klè sou demann abònman an
+  const membershipButton = get("submitMembership");
+
+  if (membershipButton) {
+    membershipButton.addEventListener("click", function () {
+      const name = get("memberName")?.value.trim() || "";
+      const email = get("memberEmail")?.value.trim() || "";
+      const plan = get("planSelect")?.value || "";
+
+      const paymentMethod = document.querySelector(
+        'input[name="payMethod"]:checked'
+      )?.value || "";
+
+      if (name.length < 2) {
+        showMessage("membershipMessage", "Tanpri antre non konplè ou.");
+        return;
+      }
+
+      if (!validEmail(email)) {
+        showMessage("membershipMessage", "Antre yon imèl ki valab.");
+        return;
+      }
+
+      if (!plan || !paymentMethod) {
+        showMessage(
+          "membershipMessage",
+          "Chwazi yon plan ak yon metòd peman."
+        );
+        return;
+      }
+
+      showMessage(
+        "membershipMessage",
+        "Demann lan verifye sou navigatè a. Plan: " +
+        plan +
+        ". Metòd: " +
+        paymentMethod +
+        ". Abònman an poko aktive; konfimasyon sèvè nesesè."
+      );
+    });
+  }
+
+  // Paramèt lang
+  const languageSelect = get("settingsLanguage");
+  const mainLanguageSelect = get("language-select");
+
+  if (languageSelect && mainLanguageSelect) {
+    languageSelect.addEventListener("change", function () {
+      mainLanguageSelect.value = languageSelect.value;
+      mainLanguageSelect.dispatchEvent(new Event("change"));
+    });
+
+    mainLanguageSelect.addEventListener("change", function () {
+      languageSelect.value = mainLanguageSelect.value;
+    });
+  }
+
+  // Estimasyon tan sesyon an
+  const sessionStartedAt = Date.now();
+
+  function updateSessionTime() {
+    const seconds = Math.floor((Date.now() - sessionStartedAt) / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+
+    showMessage(
+      "sessionTime",
+      minutes + " min " + remainingSeconds + " s"
+    );
+  }
+
+  updateSessionTime();
+  window.setInterval(updateSessionTime, 1000);
+
+  // Pa fè fo reklamasyon sou done mobil yo.
+  showMessage(
+    "sessionData",
+    "Pa disponib"
+  );
+});
+</script>
+</body>
+</html>
