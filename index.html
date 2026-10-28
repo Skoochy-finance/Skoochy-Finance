@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06142d">
+<meta name="description" content="Skoochy Finance — outils éducatifs de gestion financière et de simulation de marchés.">
+<title>Skoochy Finance</title>
+<style>
+:root{--bg:#041126;--panel:#0b1c39;--panel2:#10284b;--line:#193d69;--text:#f4f7ff;--muted:#aebfdd;--gold:#ffc247;--blue:#1687ff;--green:#16c995;--red:#ef6671;--purple:#a45bff;--radius:22px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 70% 0,#102d54 0,var(--bg) 45%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input,select{font:inherit}
+button,select{cursor:pointer}
+button{border:1px solid var(--line);border-radius:14px;background:#10284b;color:var(--text);padding:11px 15px;font-weight:650}
+button:hover{filter:brightness(1.13)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+input,select{width:100%;padding:12px 13px;border:1px solid #28486f;border-radius:12px;background:#06162f;color:var(--text)}
+label{display:block;color:var(--muted);font-size:.9rem;margin:12px 0 6px}
+.app{max-width:1180px;margin:auto;min-height:100vh;border-inline:1px solid #183454}
+.topbar{display:flex;align-items:center;gap:14px;padding:20px 22px;border-bottom:1px solid #173657;background:#06152bde;position:sticky;top:0;z-index:10;backdrop-filter:blur(16px)}
+.brand-icon{display:grid;place-items:center;width:62px;height:62px;border-radius:18px;background:#9ce9c6;color:#063b34;font-size:30px;flex-shrink:0}
+.brand{flex:1;min-width:0}
+.brand h1{font-size:clamp(1.15rem,3vw,1.75rem);margin:0}
+.brand h1 span{color:var(--gold)}
+.brand p{margin:4px 0 0;color:var(--muted);font-size:.92rem}
+.icon-btn{font-size:1.3rem;width:48px;height:48px;padding:0;border-radius:50%;background:#142b4c}
+.language-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 22px;padding:12px 16px;border:1px solid var(--line);border-radius:18px;background:#081a34}
+.language-bar label{margin:0;font-size:1rem}
+.language-bar select{max-width:260px}
+.content{padding:0 22px 100px}
+.page{display:none}
+.page.active{display:block}
+.hero{position:relative;overflow:hidden;padding:28px;border:1px solid #1d4a7a;border-radius:28px;background:radial-gradient(circle at 80% 30%,#17457a 0,#0c2345 40%,#07172e 78%);margin-bottom:22px}
+.hero-showcase{display:block;width:100%;height:auto;max-height:520px;object-fit:cover;object-position:center;border:1px solid #214c7a;border-radius:22px;margin:0 0 22px;box-shadow:0 16px 40px #0006}
+.payment-status-note{border:1px solid #8b6b27;background:#2a220f;color:#ffe3a1;border-radius:12px;padding:12px;line-height:1.5;margin:12px 0}
+.hero h2{font-size:clamp(1.8rem,5vw,3rem);line-height:1.12;max-width:700px;margin:18px 0}
+.hero h2 span{color:var(--gold)}
+.hero p{color:#c0d1ef;max-width:700px;line-height:1.65}
+.pill{display:inline-flex;align-items:center;gap:8px;background:#075c4c;color:#a7ffe0;border-radius:999px;padding:9px 14px;font-weight:700;font-size:.9rem}
+.primary{background:var(--gold);color:#111e32;border-color:var(--gold);border-radius:999px;padding:14px 23px}
+.hero-art{position:absolute;right:4%;top:23%;font-size:clamp(5rem,15vw,10rem);opacity:.95;filter:drop-shadow(0 12px 24px #0008);pointer-events:none}
+.hero-copy{position:relative;z-index:1;max-width:75%}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{border:1px solid #1b4778;background:linear-gradient(145deg,#0b2040,#08182f);border-radius:22px;padding:20px;min-width:0}
+.feature-icon{width:68px;height:68px;display:grid;place-items:center;border-radius:18px;font-size:2rem;margin-bottom:15px}
+.blue{background:#064a9d;color:#75c4ff}
+.green{background:#075c4d;color:#65f4cb}
+.gold{background:#68420c;color:#ffd16a}
+.purple{background:#4c1685;color:#d7aaff}
+.card h3{margin:5px 0 8px;font-size:1.35rem}
+.card p{color:var(--muted);line-height:1.55;margin:8px 0 16px}
+.open-btn{border-radius:999px;background:#064a9d;border-color:#1687ff}
+.section-title{margin:0 0 16px;font-size:1.55rem}
+.subtle{color:var(--muted);line-height:1.55}
+.account-strip{display:flex;align-items:center;gap:16px;margin-top:20px}
+.account-strip .grow{flex:1}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}
+.result{padding:14px;margin-top:14px;background:#06162e;border:1px solid #24466e;border-radius:14px;color:#dceaff;line-height:1.6;overflow-wrap:anywhere}
+.warning{color:#ffd28b;font-size:.9rem}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.stat strong{display:block;font-size:1.8rem;margin:12px 0}
+.green-text{color:#38d6a2}
+.red-text{color:#ff777f}
+.quicknav{background:#0c1a35;border:1px solid #203b62;border-radius:24px;padding:20px;margin-top:22px}
+.quicknav button{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;margin:8px 0;background:#132848;border:0;padding:16px}
+.bottom-nav{position:fixed;z-index:20;bottom:0;left:50%;transform:translateX(-50%);width:min(1180px,100%);display:flex;overflow-x:auto;background:#06142bf2;border-top:1px solid #1b3c63;padding:8px 6px calc(8px + env(safe-area-inset-bottom));backdrop-filter:blur(16px)}
+.bottom-nav button{flex:1;min-width:72px;background:transparent;border:0;padding:8px 4px;color:#b6c7e5;font-size:.72rem;display:flex;align-items:center;gap:5px;flex-direction:column}
+.bottom-nav button .navicon{font-size:1.25rem}
+.bottom-nav button.active{color:var(--gold);border-bottom:3px solid var(--gold);border-radius:0}
+.bottom-nav button[data-page="settings"]{position:relative}
+.bottom-nav button[data-page="settings"]::after{content:"";position:absolute;right:18%;top:4px;width:8px;height:8px;border-radius:50%;background:#ff5364}
+.list-row{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid #203a5c}
+.list-row:last-child{border-bottom:0}
+.progress{height:9px;border-radius:99px;background:#20304b;overflow:hidden;margin:8px 0 16px}
+.progress span{display:block;height:100%;background:var(--blue)}
+.lesson{margin:10px 0;border:1px solid #28486d;border-radius:14px;padding:14px;background:#091a34}
+.lesson summary{cursor:pointer;font-weight:700}
+.lesson p{color:var(--muted);line-height:1.6}
+.status{font-size:.88rem;color:#9ef1cf}
+.footer{text-align:center;color:#8194b4;padding:25px 15px 40px;font-size:.85rem}
+.hidden{display:none!important}
+@media(min-width:800px){.hero{padding:38px}.hero-copy{max-width:72%}.feature-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.feature-grid .card{padding:18px}.content{padding-bottom:45px}.bottom-nav{position:sticky;transform:none;left:auto;width:100%;bottom:0}.topbar{position:sticky}}
+@media(max-width:540px){.hero-showcase{border-radius:14px;margin-bottom:14px;max-height:360px}.topbar{padding:14px 12px;gap:9px}.brand-icon{width:50px;height:50px;border-radius:15px;font-size:25px}.brand p{font-size:.75rem}.icon-btn{width:39px;height:39px}.language-bar{margin:12px;padding:10px;gap:8px}.language-bar select{max-width:190px}.content{padding:0 12px 90px}.hero{padding:20px}.hero-copy{max-width:100%}.hero-art{opacity:.16;right:0;top:22%}.grid,.two-col,.field-grid,.stats{grid-template-columns:1fr}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feature-grid .card{padding:14px}.feature-icon{width:54px;height:54px;font-size:1.6rem}.card h3{font-size:1.1rem}.card p{font-size:.9rem}.account-strip{align-items:flex-start;flex-wrap:wrap}.account-strip .grow{min-width:60%}.bottom-nav button{min-width:67px}.bottom-nav button .navicon{font-size:1.1rem}}
+  </style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand-icon">₿</div>
+  <div class="brand">
+    <h1>Skoochy <span>Finance</span></h1>
+    <p id="headerSubtitle">Trade Smarter, Succeed Further</p>
+  </div>
+  <button class="icon-btn" id="notificationBtn" type="button" aria-label="Notifications">♧</button>
+</header>
+
+<div class="language-bar">
+  <label for="languageSelect" id="languageLabel">Langue / Language</label>
+  <select id="languageSelect">
+    <option value="fr">Français</option>
+    <option value="ht">Kreyòl Ayisyen</option>
+    <option value="en">English</option>
+    <option value="es">Español</option>
+  </select>
+</div>
+
+<main class="content">
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="pill" id="heroPill">✦ Plateforme éducative</span>
+      <h2 id="heroTitle">Découvrez les marchés avec <span>Skoochy Finance</span></h2>
+      <p id="heroDescription">Apprenez les bases du Forex, des cryptomonnaies et des CFD avec des leçons, des outils de calcul et un compte de démonstration éducatif.</p>
+      <button class="primary" type="button" data-goto="training" id="heroButton">Commencer la formation →</button>
+    </div>
+    <div class="hero-art" aria-hidden="true">📈</div>
+  </div>
+
+  <h2 class="section-title" id="toolsTitle">Nos outils financiers</h2>
+  <div class="grid feature-grid">
+    <article class="card">
+      <div class="feature-icon blue">📊</div>
+      <h3 id="forexTitle">Forex</h3>
+      <p id="forexDescription">Explorez les paires de devises et les variations de prix.</p>
+      <button class="open-btn" type="button" data-goto="calculator" id="forexButton">Ouvrir →</button>
+    </article>
+    <article class="card">
+      <div class="feature-icon green">₿</div>
+      <h3 id="cryptoTitle">Crypto</h3>
+      <p id="cryptoDescription">Étudiez les cryptomonnaies avec des exemples éducatifs.</p>
+      <button class="open-btn" type="button" data-goto="demo" id="cryptoButton">Essayer la démo →</button>
+    </article>
+    <article class="card">
+      <div class="feature-icon gold">🧮</div>
+      <h3 id="calculatorTitle">Calculatrice</h3>
+      <p id="calculatorDescription">Estimez les gains, les pertes et le risque théorique.</p>
+      <button class="open-btn" type="button" data-goto="calculator" id="calculatorButton">Calculer →</button>
+    </article>
+    <article class="card">
+      <div class="feature-icon purple">🎓</div>
+      <h3 id="trainingTitle">Formation</h3>
+      <p id="trainingDescription">Progressez grâce aux leçons et aux exercices.</p>
+      <button class="open-btn" type="button" data-goto="training" id="trainingButton">Apprendre →</button>
+    </article>
+  </div>
+
+  <div class="quicknav">
+    <h2 id="quickTitle">Accès rapide</h2>
+    <button type="button" data-goto="demo"><span>🎮 <span id="quickDemo">Compte démo éducatif</span></span><span>→</span></button>
+    <button type="button" data-goto="calculator"><span>🧮 <span id="quickCalc">Calculateur de trading</span></span><span>→</span></button>
+    <button type="button" data-goto="training"><span>📚 <span id="quickLearn">Centre de formation</span></span><span>→</span></button>
+    <button type="button" data-goto="account"><span>👤 <span id="quickAccount">Mon compte</span></span><span>→</span></button>
+  </div>
+</section>
+
+<section class="page" id="page-calculator">
+  <h2 class="section-title" id="calcPageTitle">Calculateur de trading</h2>
+  <p class="subtle" id="calcIntro">Utilisez ces outils pour comprendre les chiffres. Les résultats sont des estimations éducatives, pas des garanties de profit.</p>
+  <div class="card">
+    <h3 id="riskCalcTitle">Calcul du risque et du résultat</h3>
+    <label for="capital" id="capitalLabel">Capital théorique ($)</label>
+    <input id="capital" type="number" min="0" step="any" value="1000">
+    <label for="riskPercent" id="riskLabel">Risque théorique (%)</label>
+    <input id="riskPercent" type="number" min="0" max="100" step="any" value="1">
+    <label for="entryPrice" id="entryLabel">Prix d'entrée</label>
+    <input id="entryPrice" type="number" min="0" step="any" value="1.1000">
+    <label for="stopPrice" id="stopLabel">Prix de sortie / stop</label>
+    <input id="stopPrice" type="number" min="0" step="any" value="1.0950">
+    <label for="direction" id="directionLabel">Sens de la position</label>
+    <select id="direction">
+      <option value="buy">Achat / Buy</option>
+      <option value="sell">Vente / Sell</option>
+    </select>
+    <button class="primary" id="calculateRisk" type="button">Calculer le risque</button>
+    <div class="result" id="riskResult" aria-live="polite">Saisissez vos valeurs puis lancez le calcul.</div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3 id="conversionTitle">Calculateur de variation</h3>
+    <label for="amount" id="amountLabel">Montant initial ($)</label>
+    <input id="amount" type="number" min="0" step="any" value="100">
+    <label for="changePercent" id="changeLabel">Variation du prix (%)</label>
+    <input id="changePercent" type="number" step="any" value="5">
+    <button class="primary" id="calculateChange" type="button">Calculer la variation</button>
+    <div class="result" id="changeResult" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="page" id="page-demo">
+  <h2 class="section-title" id="demoPageTitle">Compte de démonstration</h2>
+  <p class="subtle" id="demoIntro">Pratiquez avec un solde virtuel. Aucun dépôt ni argent réel n'est nécessaire.</p>
+  <div class="stats">
+    <div class="card stat">
+      <span id="demoBalanceLabel">Solde virtuel</span>
+      <strong id="demoBalance">$10,000.00</strong>
+      <span class="subtle" id="demoBalanceHint">Simulation uniquement</span>
+    </div>
+    <div class="card stat">
+      <span id="demoTradesLabel">Transactions simulées</span>
+      <strong id="demoTrades">0</strong>
+      <span class="subtle" id="demoTradesHint">Historique local de la démo</span>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3 id="demoTradeTitle">Nouvelle transaction simulée</h3>
+    <label for="demoPair" id="demoPairLabel">Marché / paire</label>
+    <select id="demoPair">
+      <option value="EUR/USD">EUR/USD</option>
+      <option value="GBP/USD">GBP/USD</option>
+      <option value="USD/JPY">USD/JPY</option>
+      <option value="BTC/USD">BTC/USD</option>
+      <option value="ETH/USD">ETH/USD</option>
+      <option value="XAU/USD">XAU/USD</option>
+    </select>
+    <label for="demoSide" id="demoSideLabel">Type de position</label>
+    <select id="demoSide">
+      <option value="buy">Achat / Buy</option>
+      <option value="sell">Vente / Sell</option>
+    </select>
+    <label for="demoStake" id="demoStakeLabel">Montant virtuel ($)</label>
+    <input id="demoStake" type="number" min="1" step="any" value="100">
+    <label for="demoOutcome" id="demoOutcomeLabel">Résultat fictif de l'exercice</label>
+    <select id="demoOutcome">
+      <option value="profit">Exemple positif (+2 %)</option>
+      <option value="loss">Exemple négatif (-2 %)</option>
+    </select>
+    <button class="primary" id="demoExecute" type="button">Exécuter la simulation</button>
+    <button id="demoReset" type="button" style="margin-left:8px">Réinitialiser</button>
+    <div class="result" id="demoResult" aria-live="polite"></div>
+    <p class="warning" id="demoWarning">Les résultats sont fictifs et ne reflètent pas les prix du marché en direct.</p>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3 id="demoHistoryTitle">Historique de la démo</h3>
+    <div id="demoHistory"><p class="subtle">Aucune transaction simulée pour le moment.</p></div>
+  </div>
+</section>
+
+<section class="page" id="page-training">
+  <h2 class="section-title" id="trainingPageTitle">Centre de formation</h2>
+  <p class="subtle" id="trainingIntro">Apprenez progressivement. Ouvrez une leçon pour lire son contenu.</p>
+  <div class="card">
+    <h3 id="progressTitle">Votre progression</h3>
+    <p id="progressText">0 leçon terminée</p>
+    <div class="progress"><span id="trainingProgress" style="width:0%"></span></div>
+  </div>
+  <div id="lessonList"></div>
+</section>
+
+<section class="page" id="page-account">
+  <h2 class="section-title" id="accountPageTitle">Mon compte</h2>
+  <div class="card">
+    <h3 id="profileTitle">Profil utilisateur</h3>
+    <label for="userName" id="nameLabel">Nom</label>
+    <input id="userName" type="text" maxlength="80" placeholder="Votre nom">
+    <label for="userEmail" id="emailLabel">Adresse e-mail</label>
+    <input id="userEmail" type="email" maxlength="254" placeholder="nom@exemple.com">
+    <button class="primary" id="saveProfile" type="button" style="margin-top:14px">Enregistrer le profil sur cet appareil</button>
+    <div class="result" id="profileResult" aria-live="polite"></div>
+    <p class="subtle" id="profilePrivacy">Ce profil est enregistré localement sur cet appareil. Il ne crée pas de compte serveur.</p>
+  </div>
+</section>
+
+<section class="page" id="page-settings">
+  <h2 class="section-title" id="settingsTitle">Paramètres</h2>
+  <div class="card">
+    <h3 id="preferencesTitle">Préférences</h3>
+    <label for="settingsLanguage" id="settingsLanguageLabel">Langue de l'application</label>
+    <select id="settingsLanguage">
+      <option value="fr">Français</option>
+      <option value="ht">Kreyòl Ayisyen</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+    </select>
+    <button id="clearLocalData" type="button" style="margin-top:16px">Effacer les données locales de la démo</button>
+    <div class="result" id="settingsResult" aria-live="polite"></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3 id="connectionTitle">État de connexion</h3>
+    <p class="subtle" id="connectionDescription">L'application peut fonctionner en mode local. La connexion à un serveur nécessite une configuration valide.</p>
+    <div class="result" id="connectionStatus">Vérification de la configuration…</div>
+  </div>
+</section>
+</main>
+
+<nav class="bottom-nav" aria-label="Navigation principale">
+  <button class="active" type="button" data-page="home"><span class="navicon">⌂</span><span id="navHome">Accueil</span></button>
+  <button type="button" data-page="calculator"><span class="navicon">🧮</span><span id="navCalculator">Calcul</span></button>
+  <button type="button" data-page="demo"><span class="navicon">🎮</span><span id="navDemo">Démo</span></button>
+  <button type="button" data-page="training"><span class="navicon">📚</span><span id="navTraining">Formation</span></button>
+  <button type="button" data-page="account"><span class="navicon">👤</span><span id="navAccount">Compte</span></button>
+  <button type="button" data-page="settings"><span class="navicon">⚙</span><span id="navSettings">Réglages</span></button>
+</nav>
+</div>
+<script>
+"use strict";
+
+const $ = (id) => document.getElementById(id);
+
+const translations = {
+  fr: {
+    navHome: "Accueil",
+    navCalculator: "Calcul",
+    navDemo: "Démo",
+    navTraining: "Formation",
+    navAccount: "Compte",
+    navSettings: "Paramètres",
+    heroPill: "✦ Plateforme éducative",
+    heroButton: "Commencer la formation →",
+    toolsTitle: "Nos outils financiers",
+    calcPageTitle: "Calculateur de trading",
+    demoPageTitle: "Compte de démonstration",
+    trainingPageTitle: "Centre de formation",
+    accountPageTitle: "Mon compte",
+    settingsTitle: "Paramètres",
+    calculateRisk: "Calculer le risque",
+    calculateChange: "Calculer la variation",
+    demoExecute: "Exécuter la simulation",
+    demoReset: "Réinitialiser",
+    saveProfile: "Enregistrer le profil",
+    connectionTitle: "État de connexion"
+  },
+  ht: {
+    navHome: "Akèy",
+    navCalculator: "Kalkil",
+    navDemo: "Demo",
+    navTraining: "Fòmasyon",
+    navAccount: "Kont",
+    navSettings: "Paramèt",
+    heroPill: "✦ Platfòm edikatif",
+    heroButton: "Kòmanse fòmasyon →",
+    toolsTitle: "Zouti finansye nou yo",
+    calcPageTitle: "Kalkilatris trading",
+    demoPageTitle: "Kont demonstrasyon",
+    trainingPageTitle: "Sant fòmasyon",
+    accountPageTitle: "Kont mwen",
+    settingsTitle: "Paramèt",
+    calculateRisk: "Kalkile risk",
+    calculateChange: "Kalkile chanjman",
+    demoExecute: "Fè simulation an",
+    demoReset: "Rekòmanse",
+    saveProfile: "Anrejistre pwofil la",
+    connectionTitle: "Eta koneksyon"
+  },
+  en: {
+    navHome: "Home",
+    navCalculator: "Calculator",
+    navDemo: "Demo",
+    navTraining: "Training",
+    navAccount: "Account",
+    navSettings: "Settings",
+    heroPill: "✦ Educational platform",
+    heroButton: "Start training →",
+    toolsTitle: "Our financial tools",
+    calcPageTitle: "Trading calculator",
+    demoPageTitle: "Demo account",
+    trainingPageTitle: "Training center",
+    accountPageTitle: "My account",
+    settingsTitle: "Settings",
+    calculateRisk: "Calculate risk",
+    calculateChange: "Calculate change",
+    demoExecute: "Run simulation",
+    demoReset: "Reset",
+    saveProfile: "Save profile",
+    connectionTitle: "Connection status"
+  },
+  es: {
+    navHome: "Inicio",
+    navCalculator: "Cálculo",
+    navDemo: "Demo",
+    navTraining: "Formación",
+    navAccount: "Cuenta",
+    navSettings: "Ajustes",
+    heroPill: "✦ Plataforma educativa",
+    heroButton: "Comenzar formación →",
+    toolsTitle: "Nuestras herramientas financieras",
+    calcPageTitle: "Calculadora de trading",
+    demoPageTitle: "Cuenta demo",
+    trainingPageTitle: "Centro de formación",
+    accountPageTitle: "Mi cuenta",
+    settingsTitle: "Ajustes",
+    calculateRisk: "Calcular riesgo",
+    calculateChange: "Calcular variación",
+    demoExecute: "Ejecutar simulación",
+    demoReset: "Reiniciar",
+    saveProfile: "Guardar perfil",
+    connectionTitle: "Estado de conexión"
+  }
+};
+
+let currentLanguage = "fr";
+let demoBalance = 10000;
+let demoTrades = [];
+let completedLessons = new Set();
+
+function translatePage(language) {
+  currentLanguage = translations[language] ? language : "fr";
+  document.documentElement.lang = currentLanguage;
+
+  Object.entries(translations[currentLanguage]).forEach(([id, value]) => {
+    const element = $(id);
+    if (element) element.textContent = value;
+  });
+
+  const selector = $("languageSelect");
+  const settingsSelector = $("settingsLanguage");
+
+  if (selector) selector.value = currentLanguage;
+  if (settingsSelector) settingsSelector.value = currentLanguage;
+
+  try {
+    localStorage.setItem("sf_language", currentLanguage);
+  } catch (error) {
+    console.warn("Langue non sauvegardée localement.");
+  }
+}
+
+function showPage(pageName) {
+  document.querySelectorAll(".page").forEach((page) => {
+    page.classList.toggle("active", page.id === "page-" + pageName);
+  });
+
+  document.querySelectorAll(".bottom-nav [data-page]").forEach((button) => {
+    const active = button.dataset.page === pageName;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-current", active ? "page" : "false");
+  });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.addEventListener("click", (event) => {
+  const gotoButton = event.target.closest("[data-goto]");
+  const navButton = event.target.closest(".bottom-nav [data-page]");
+
+  if (gotoButton) showPage(gotoButton.dataset.goto);
+  if (navButton) showPage(navButton.dataset.page);
+});
+
+$("languageSelect").addEventListener("change", (event) => {
+  translatePage(event.target.value);
+});
+
+$("settingsLanguage").addEventListener("change", (event) => {
+  translatePage(event.target.value);
+});
+
+$("notificationBtn").addEventListener("click", () => {
+  alert(
+    currentLanguage === "ht"
+      ? "Pa gen nouvo notifikasyon pou kounye a."
+      : currentLanguage === "es"
+      ? "No hay nuevas notificaciones."
+      : currentLanguage === "en"
+      ? "There are no new notifications."
+      : "Aucune nouvelle notification."
+  );
+});
+</script>
+</body>
+</html>
