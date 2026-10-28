@@ -525,4 +525,270 @@ es pips et la gestion du risque.</p><button class="open-btn" data-goto="forex" d
 <summary>10. P2P: sekirite tranzaksyon</summary>
 <p>P2P mete achtè ak vandè an kontak. Verifye non kont moun nan, kondisyon platfòm nan, frè ak limit. Pa lage crypto anvan ou konfime lajan an rive nan kont ou; pa fè konfyans ak screenshot sèlman. Sèvi ak escrow platfòm nan lè li disponib epi kenbe prèv tranzaksyon yo.</p>
 </details>
+  <section id="account" class="page">
+<h2 class="section-title" data-i18n="navAccount">Mon compte</h2>
+<div class="card">
+<p class="subtle" data-i18n="accountInfo">Cette maquette fournit une interface de compte. L'authentification réelle doit être configurée avec Firebase ou un serveur sécurisé.</p>
+
+<label for="authMode" data-i18n="action">Action</label>
+<select id="authMode">
+<option value="login" data-i18n="login">Se connecter</option>
+<option value="register" data-i18n="register">Créer un compte</option>
+</select>
+
+<div id="authNameContainer">
+<label for="authName" data-i18n="name">Nom</label>
+<input id="authName" autocomplete="name" placeholder="Votre nom">
+</div>
+
+<label for="authEmail" data-i18n="email">Adresse e-mail</label>
+<input id="authEmail" type="email" autocomplete="email" placeholder="nom@exemple.com">
+
+<label for="authPassword" data-i18n="password">Mot de passe</label>
+<input id="authPassword" type="password" minlength="8" autocomplete="current-password" placeholder="8 caractères minimum">
+
+<button id="authSubmit" data-i18n="continue">Continuer</button>
+<button id="resetPassword" style="margin-left:6px" data-i18n="forgotPassword">Mot de passe oublié ?</button>
+
+<div id="authMessage" class="result" aria-live="polite">Version démo : le compte réel n'est pas connecté.</div>
+
+<div id="profilePanel" class="result hidden">
+<h3 data-i18n="myProfile">Mon profil</h3>
+<p><span data-i18n="name">Nom</span>: <strong id="profileName">—</strong></p>
+<p><span data-i18n="email">E-mail</span>: <strong id="profileEmail">—</strong></p>
+<button id="editNameButton" data-i18n="editName">Modifier mon nom</button>
+<button id="logoutButton" data-i18n="logout">Se déconnecter</button>
+</div>
+
+<p class="warning" data-i18n="authNote">La vérification anti-robot et l'authentification réelle doivent être activées côté service avant mise en production.</p>
+</div>
+</section>
+
+<section id="settings" class="page">
+<h2 class="section-title" data-i18n="navSettings">Paramètres</h2>
+
+<div class="card">
+<h3 data-i18n="preferences">Préférences</h3>
+
+<label for="settingsLanguage" data-i18n="language">Langue</label>
+<select id="settingsLanguage">
+<option value="fr">🇫🇷 Français</option>
+<option value="ht">🇭🇹 Kreyòl ayisyen</option>
+<option value="en">🇬🇧 English</option>
+<option value="es">🇪🇸 Español</option>
+</select>
+
+<label for="currencyPreference" data-i18n="displayCurrency">Devise d'affichage</label>
+<select id="currencyPreference">
+<option>USD</option>
+<option>HTG</option>
+<option>EUR</option>
+<option>CAD</option>
+</select>
+
+<label>
+<input id="showDemoWarning" type="checkbox" checked style="width:auto">
+<span data-i18n="showWarnings">Afficher les avertissements de simulation</span>
+</label>
+
+<button id="saveSettings" data-i18n="saveSettings">Enregistrer les paramètres</button>
+<div id="settingsMessage" class="result" aria-live="polite">—</div>
+</div>
+
+<div class="card" style="margin-top:16px">
+<h3 data-i18n="security">Sécurité et confidentialité</h3>
+<p class="subtle" data-i18n="securityText">Utilisez un mot de passe unique, vérifiez l'adresse du site et ne partagez jamais vos codes. Aucune application ne peut promettre une sécurité absolue.</p>
+
+<h3 data-i18n="payments">Paiements et accès</h3>
+<p class="subtle" data-i18n="paymentsText">MonCash, NatCash, USDT et PayPal sont des méthodes prévues, mais aucun paiement n'est encaissé par ce prototype. Une intégration légale, un prestataire et une vérification serveur sont requis.</p>
+
+<h3 data-i18n="dataMonetization">Données mobiles et rémunération</h3>
+<p class="subtle" data-i18n="dataText">La consommation de 2 MB ne se convertit pas automatiquement en argent. Une rémunération exige un modèle de revenus réel, transparent et conforme à la loi.</p>
+</div>
+</section>
+<section id="membership" class="page">
+  <h2 class="section-title">Enskripsyon ak abònman</h2>
+
+  <div class="access-banner">
+    <h3>🔐 Kreye kont ou anvan aksè</h3>
+    <p>Ranpli non ak imèl ou, chwazi plan an ak MonCash oswa NatCash, epi peze bouton peman an. Pòtay peman an ap louvri; aksè abònman aktive sèlman apre sèvè a konfime peman an.</p>
+  </div>
+
+  <div class="card">
+    <label for="memberName">Non konplè</label>
+    <input id="memberName" autocomplete="name" placeholder="Non ou">
+
+    <label for="memberEmail">Imèl</label>
+    <input id="memberEmail" type="email" autocomplete="email" placeholder="ou@egzanp.com">
+
+    <label for="planSelect">Plan aksè</label>
+    <select id="planSelect">
+      <option value="monthly">Plan chak mwa — pri pou administratè fikse</option>
+      <option value="annual">Plan chak ane — pri pou administratè fikse</option>
+    </select>
+
+    <h3>Chwazi metòd peman</h3>
+    <label class="payment-option">
+      <input type="radio" name="payMethod" value="MonCash" checked> MonCash
+    </label>
+    <label class="payment-option">
+      <input type="radio" name="payMethod" value="NatCash"> NatCash
+    </label>
+    <label class="payment-option">
+      <input type="radio" name="payMethod" value="USDT"> USDT — BEP-20 (BSC)
+    </label>
+
+    <div id="manualRefWrap" class="hidden">
+      <label for="paymentReference">Referans tranzaksyon USDT (verifikasyon manyèl)</label>
+      <input id="paymentReference" placeholder="Antre referans lan apre ou fin peye">
+    </div>
+
+    <div class="result" id="paymentInstructions" aria-live="polite">
+      Metòd chwazi: MonCash. Verifye nimewo benefisyè a ak non Noël Saint Jerry anvan peman.
+    </div>
+
+    <div class="payment-status-note">
+      <strong>Enpòtan:</strong>
+      MonCash/NatCash mande backend HTTPS, kle API Tranzak sou sèvè a, ak webhook ki verifye siyati a. Pa mete kle API a nan HTML. USDT rete sou verifikasyon manyèl nan vèsyon sa a.
+    </div>
+
+    <button id="submitMembership" class="primary">Kontinye pou peye</button>
+    <div id="membershipMessage" class="result" aria-live="polite">Estati: poko soumèt.</div>
+  </div>
+
+  <div class="card" id="adminPricingCard" style="margin-top:16px">
+    <h3>⚙️ Paramèt administratè — pri abònman</h3>
+    <p class="subtle">Konekte ak sèvè Skoochy Finance pou jere pri abònman yo. Lè API a pa disponib, chanjman yo pa sove.</p>
+
+    <label for="adminEmail">Imèl administratè</label>
+    <input id="adminEmail" type="email" autocomplete="username" placeholder="admin@egzanp.com">
+
+    <label for="adminPassword">Modpas administratè</label>
+    <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Antre modpas administratè a">
+
+    <button id="adminLogin" type="button">Konekte kòm administratè</button>
+    <button id="adminLogout" type="button" hidden>Dekonekte</button>
+
+    <div id="adminAuthMessage" class="result" aria-live="polite">Ou poko konekte.</div>
+
+    <div class="field-grid">
+      <div>
+        <label for="adminMonthlyPrice">Pri chak mwa (USD)</label>
+        <input id="adminMonthlyPrice" type="number" min="0.01" step="0.01" placeholder="Egzanp: 5">
+      </div>
+      <div>
+        <label for="adminAnnualPrice">Pri chak ane (USD)</label>
+        <input id="adminAnnualPrice" type="number" min="0.01" step="0.01" placeholder="Egzanp: 50">
+      </div>
+    </div>
+
+    <button id="saveAdminPrices" class="primary" type="button">Sove pri abònman yo</button>
+    <div id="adminPricingMessage" class="result" aria-live="polite">Pri yo poko fikse.</div>
+
+    <hr style="border-color:var(--line);margin:20px 0">
+
+    <h3>Demann abònman pou verifye</h3>
+    <button id="loadAdminRequests" type="button">Chaje demann yo</button>
+    <div id="adminRequestsMessage" class="result" aria-live="polite">Konekte kòm administratè pou wè demann yo.</div>
+    <div id="adminRequestsList" class="field-grid"></div>
+
+    <hr style="border-color:var(--line);margin:20px 0">
+
+    <h3>📊 Estatistik tan itilizasyon (30 dènye jou)</h3>
+    <p class="subtle">Tan aktif estime sèlman. Estatistik yo pa montre non oswa imèl vizitè yo.</p>
+
+    <button id="loadAdminAnalytics" type="button">Chaje estatistik yo</button>
+    <div id="adminAnalyticsMessage" class="result" aria-live="polite">Konekte kòm administratè pou wè estatistik yo.</div>
+    <div id="adminAnalyticsList" class="field-grid"></div>
+
+    <p class="warning">Sa yo se estimasyon itilizasyon, pa revni garanti. Pa gen piblisite ki aktive otomatikman.</p>
+    <p class="warning">Sekirite a depann de sèvè a. Pa mete modpas administratè nan kòd HTML piblik.</p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>📶 Tan sou sit la ak done</h3>
+    <p class="subtle">Sa yo se estimasyon navigatè a, pa yon kontè ofisyèl done mobil. Navigatè a pa ka mezire tout itilizasyon rezo a avèk presizyon, espesyalman cache, lòt aplikasyon oswa done operatè a.</p>
+
+    <div class="metric-grid">
+      <div class="metric">Tan sesyon<strong id="sessionTime">0 min 0 s</strong></div>
+      <div class="metric">Resous paj estime<strong id="sessionData">0 KB</strong></div>
+      <div class="metric">Modèl revni<strong>Pa aktive</strong></div>
+    </div>
+
+    <p class="warning">Tan oswa megabay pa otomatikman kreye revni. Pou peye moun, fòk gen revni reyèl, règ transparan, verifikasyon kont ak sistèm peman legal.</p>
+  </div>
+</section>
+  <section id="payments" class="page">
+  <h2 class="section-title">Metòd peman</h2>
+
+  <div class="card">
+    <h3>💳 MonCash ak NatCash</h3>
+    <p class="subtle">Entegrasyon peman an dwe fèt atravè yon sèvis backend HTTPS. Pa mete kle prive oswa sekrè API nan HTML piblik la.</p>
+
+    <div class="field-grid">
+      <div>
+        <label for="paymentProvider">Metòd peman</label>
+        <select id="paymentProvider">
+          <option value="MonCash">MonCash</option>
+          <option value="NatCash">NatCash</option>
+        </select>
+      </div>
+      <div>
+        <label for="paymentAmount">Montan (USD)</label>
+        <input id="paymentAmount" type="number" min="0.01" step="0.01" placeholder="Antre montan an">
+      </div>
+    </div>
+
+    <label for="paymentCustomerEmail">Imèl kliyan</label>
+    <input id="paymentCustomerEmail" type="email" placeholder="kliyan@egzanp.com">
+
+    <button id="createPaymentRequest" type="button">Prepare demann peman</button>
+
+    <div id="paymentRequestMessage" class="result" aria-live="polite">
+      Pa gen demann peman ki kreye.
+    </div>
+
+    <p class="warning">Bouton sa a pa dwe make yon peman kòm peye san konfimasyon sèvè a. Verifye montan, lajan, idantite tranzaksyon ak siyati webhook la.</p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>₮ Peman USDT</h3>
+    <p class="subtle">Pou nenpòt peman crypto, verifye rezo a, adrès resepsyon an ak montan an anvan ou voye lajan.</p>
+
+    <label for="usdtNetwork">Rezo</label>
+    <select id="usdtNetwork">
+      <option value="BEP20">BNB Smart Chain (BEP-20)</option>
+      <option value="TRC20">TRON (TRC-20)</option>
+      <option value="ERC20">Ethereum (ERC-20)</option>
+    </select>
+
+    <label for="usdtAmount">Montan USDT</label>
+    <input id="usdtAmount" type="number" min="0.01" step="0.01" placeholder="Antre montan an">
+
+    <label for="usdtTxReference">Referans tranzaksyon</label>
+    <input id="usdtTxReference" placeholder="Hash tranzaksyon an">
+
+    <button id="submitUsdtReference" type="button">Soumèt referans lan</button>
+
+    <div id="usdtMessage" class="result" aria-live="polite">
+      Estati: poko soumèt.
+    </div>
+
+    <p class="warning">Soumèt yon hash pa prèv peman poukont li. Backend la dwe verifye tranzaksyon an sou bon rezo a anvan li aktive abònman an.</p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>🧾 Estati tranzaksyon</h3>
+    <p>Estati posib:</p>
+    <ul>
+      <li><strong>Pending:</strong> tranzaksyon an ap tann verifikasyon.</li>
+      <li><strong>Paid:</strong> sèvè a konfime peman an.</li>
+      <li><strong>Failed:</strong> peman an echwe.</li>
+      <li><strong>Cancelled:</strong> kliyan an anile demann lan.</li>
+    </ul>
+    <div id="transactionStatus" class="result" aria-live="polite">
+      Pa gen tranzaksyon verifye.
+    </div>
+  </div>
+</section>
   
