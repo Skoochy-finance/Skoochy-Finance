@@ -61,6 +61,7 @@
  .admin-auth-row{grid-template-columns:1fr}
 }
 
+ 
 .home-cover{position:relative;isolation:isolate;overflow:hidden;min-height:clamp(620px,78vh,850px);padding:clamp(22px,5vw,58px);margin:0 0 18px;border:1px solid #28527d;border-radius:30px;background:radial-gradient(ellipse at 76% 42%,#153e70 0,#0b2446 34%,#06152b 72%);display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 70px #0005}
 .home-cover:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.2;background-image:linear-gradient(#8bb8e51a 1px,transparent 1px),linear-gradient(90deg,#8bb8e51a 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(90deg,transparent,#000)}
 .cover-glow{position:absolute;z-index:-1;border-radius:50%;filter:blur(4px);pointer-events:none}.cover-glow-one{width:420px;height:420px;right:4%;top:12%;background:#1677d52b}.cover-glow-two{width:260px;height:260px;right:27%;bottom:2%;background:#e8a92a18}
@@ -606,5 +607,6 @@ document.addEventListener("visibilitychange",()=>{
  document.getElementById("language-select")?.addEventListener("change",applyCoreLessonLanguage);
 })();
 </script>
+ 
 </body>
 </html>
