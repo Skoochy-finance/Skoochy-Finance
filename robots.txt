@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://skoochy-finance.github.io/Skoochy-Finance/sitemap.xml
